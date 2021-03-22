@@ -1,0 +1,60 @@
+<form class="form-froup row" form.valid>
+
+    <label class="col-sm-2 col-form-label">Member Name</label>
+    <div class="col-sm-10">
+        <input type="text" name="name" class="form-control" [(ngModel)]="name"
+        placeholder="Enter Name" required />
+    </div>
+
+    <label class="col-sm-2 col-form-label">Member Surname</label>
+    <div class="col-sm-10">
+        <input type="text" name="surname" class="form-control" [(ngModel)]="surname"
+        placeholder="Enter Surname" required />
+    </div>
+    
+    <label class="col-sm-2 col-form-label">Member email</label>
+    <div class="col-sm-10">
+        <input class="form-control" type="email" name="email" [(ngModel)]="email"
+        placeholder="Enter Member email" #email="ngModel" required 
+        pattern="[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" />
+        <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+            Некорректный email
+          </div>
+    </div>
+    
+    <label class="col-sm-2 col-form-label">Phone Number</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="phoneNumber"
+        placeholder="Enter Phone Number" required />
+    </div>
+    
+    <label class="col-sm-2 col-form-label">Member address</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="address"
+        placeholder="Enter address" />
+    </div>
+    
+    <label class="col-sm-2 col-form-label">Member city</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="city"
+        placeholder="Enter city" />
+    </div>
+    
+    <label class="col-sm-2 col-form-label">Family</label>
+    <div class="col-sm-10">
+       <select class="form-control" [(ngModel)]=familyId>
+           <option disabled selected>--Select--</option>
+           <option *ngFor="let family of FamilyList" value="{{family.id}}">
+               {{family.name}}
+           </option>
+       </select>
+    </div>
+</form>
+
+<button (click)="addMember()" *ngIf="mem.id==0" class="btn btn-primary">
+    Add
+</button>
+
+<button (click)="updateMember()" *ngIf="mem.id!=0" class="btn btn-primary">
+    Update
+</button>
