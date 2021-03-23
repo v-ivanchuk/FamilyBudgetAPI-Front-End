@@ -1,4 +1,4 @@
-<form class="form-froup row" form.valid>
+<div class="form-froup row">
 
     <label class="col-sm-2 col-form-label">Member Name</label>
     <div class="col-sm-10">
@@ -12,14 +12,10 @@
         placeholder="Enter Surname" required />
     </div>
     
-    <label class="col-sm-2 col-form-label">Member email</label>
+    <label class="col-sm-2 col-form-label">Member Surname</label>
     <div class="col-sm-10">
-        <input class="form-control" type="email" name="email" [(ngModel)]="email"
-        placeholder="Enter Member email" #email="ngModel" required 
-        pattern="[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" />
-        <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
-            Некорректный email
-          </div>
+        <input type="text" name="email" class="form-control" [(ngModel)]="email"
+        placeholder="Enter email" required />
     </div>
     
     <label class="col-sm-2 col-form-label">Phone Number</label>
@@ -49,7 +45,7 @@
            </option>
        </select>
     </div>
-</form>
+</div>
 
 <button (click)="addMember()" *ngIf="mem.id==0" class="btn btn-primary">
     Add
